@@ -30,7 +30,7 @@ class NullFormatterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException OutOfBoundsException
+     * @expectedException OutOfRangeException
      */
     public function testSetterGetterNullBehavior()
     {

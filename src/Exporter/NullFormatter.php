@@ -13,7 +13,7 @@
 namespace League\Csv\Exporter;
 
 use InvalidArgumentException;
-use OutOfBoundsException;
+use OutOfRangeException;
 
 /**
  *  A class to handle null value formatting on data insertion into a CSV
@@ -46,14 +46,14 @@ class NullFormatter
      *
      * @param int $value a Writer null behavior constant
      *
-     * @throws \OutOfBoundsException If the Integer is not valid
+     * @throws \OutOfRangeException If the Integer is not valid
      *
      * @return static
      */
     public function setMode($value)
     {
         if (! in_array($value, [self::NULL_AS_SKIP_CELL, self::NULL_AS_EMPTY])) {
-            throw new OutOfBoundsException('invalid value for null handling');
+            throw new OutOfRangeException('invalid value for null handling');
         }
         $this->null_handling_mode = $value;
 

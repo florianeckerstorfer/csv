@@ -2,8 +2,7 @@
 
 namespace League\Csv\Test\Exporter;
 
-use InvalidArgumentException;
-use League\Csv\Exception\ValidationException;
+use League\Csv\Exception\InvalidRowException;
 use League\Csv\Exporter\NullValidator;
 use League\Csv\Writer;
 use PHPUnit_Framework_TestCase;
@@ -38,9 +37,10 @@ class NullValidatorTest extends PHPUnit_Framework_TestCase
         $this->csv->addValidator($validator, $validator_name);
         try {
             $this->csv->insertOne($expected);
-        } catch (ValidationException $e) {
-            $this->assertSame($validator_name, $this->csv->getLastValidatorErrorName());
-            $this->assertSame($expected, $this->csv->getLastValidatorErrorData());
+        } catch (InvalidRowException $e) {
+            $this->assertSame($validator_name, $e->getName());
+            $this->assertSame($expected, $e->getData());
+            $this->assertSame('row validation failed', $e->getMessage());
         }
     }
 }
