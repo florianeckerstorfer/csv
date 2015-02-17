@@ -115,7 +115,7 @@ $writer->insertOne(["foo", null, "bar"]);
 
 Directly checking row consistency has been removed from the `Writer` class. If your code relied on it you can use the new validation and formatting capabilities of the `Writer` class and:
 
-- the `League\Csv\Exporter\Validators\ColumnConsistency` class.
+- the `League\Csv\Exporter\ColumnConsistencyValidator` class.
 
 **Old code:**
 
@@ -135,9 +135,9 @@ $nb_column_count = $writer->getColumnsCount(); //returns 3
 
 ~~~php
 use League\Csv\Writer;
-use League\Csv\Exporter\Validators\ColumnConsistency;
+use League\Csv\Exporter\ColumnConsistencyValidator;
 
-$validator = new ColumnConsistency();
+$validator = new ColumnConsistencyValidator();
 $validator->autodetectColumnsCount();
 $validator->getColumnsCount(); //returns -1
 
