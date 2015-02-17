@@ -170,7 +170,7 @@ try {
 ~~~
 
 If the validation failed a `League\Csv\Exception\InvalidRowException` is thrown by the `Writer` object. 
-This expection extends PHPs `InvalidArgumentException` by adding two public getter methods
+This exception extends PHPs `InvalidArgumentException` by adding two public getter methods
 
 - `InvalidRowException::getName`: returns the name of the faild validator
 - `InvalidRowException::getData`: returns the invalid data submitted to the validator
